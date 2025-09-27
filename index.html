@@ -1,11 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>MediQueue - Hospital Queue Management System</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  
+
+<body class="antialiased text-gray-800">
+
+  <div class="container mx-auto p-4 md:p-8">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-indigo-700">MediQueue</h1>
+      <p class="text-lg text-gray-600 mt-2">Efficiently manage your patient workflow.</p>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Left Column -->
+      <div class="lg:col-span-1 space-y-8">
+        <!-- Add Patient Form -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg">
+          <h2 class="text-2xl font-bold mb-4 text-indigo-600 border-b pb-2">Add New Patient</h2>
+          <form id="add-patient-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+              <input type="text" id="name" name="name" required
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div>
+              <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+              <input type="number" id="age" name="age" min="0" max="120" required
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div>
+              <label for="severity" class="block text-sm font-medium text-gray-700">Severity (1-5)</label>
+              <select id="severity" name="severity" required
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                <option value="1">1 (Critical)</option>
+                <option value="2">2 (High)</option>
+                <option value="3" selected>3 (Medium)</option>
+                <option value="4">4 (Low)</option>
+                <option value="5">5 (Minor)</option>
+              </select>
+            </div>
+            <button type="submit"
+              class="w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700">
+              Add to Queue
+            </button>
+          </form>
+        </div>
+
+        <!-- Sorting Controls -->
+
+
+
+        <!-- Searching Controls -->
+
+
+        <!-- Right Column -->
+        <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+          <div class="flex justify-between items-center mb-4 border-b pb-2">
+            <h2 class="text-2xl font-bold text-indigo-600">Current Queue</h2>
+            <div class="flex items-center space-x-2">
+              <div class="tooltip">
+                <button id="reset-view-btn"
+                  class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300 text-sm">Reset View</button>
+                <span class="tooltip-text">Show original queue</span>
+              </div>
+              <div class="tooltip">
+                <button id="dequeue-btn" class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600">
+                  Serve Next Patient
+                </button>
+                <span class="tooltip-text">Serve highest priority</span>
+              </div>
+            </div>
+          </div>
+          <div id="queue-status" class="text-center text-gray-500 py-16">
+            The queue is currently empty.
+          </div>
+          <div class="overflow-x-auto">
+            <table id="patient-table" class="min-w-full divide-y divide-gray-200 hidden">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Age</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Severity</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Arrival Time</th>
+                </tr>
+              </thead>
+              <tbody id="patient-queue" class="bg-white divide-y divide-gray-200"></tbody>
+            </table>
+          </div>
+        </div>
+    </main>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification"
+    class="fixed top-5 right-5 bg-indigo-500 text-white py-2 px-5 rounded-lg shadow-xl transform translate-x-[120%] opacity-0">
+    <p id="notification-message"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/patient.js"></script>
+  <script src="js/queueOperations.js"></script>
+  <script src="js/sortAlgorithms.js"></script>
+  <script src="js/searchAlgorithms.js"></script>
+  <script src="js/uiComponents.js"></script>
 </body>
+
 </html>
