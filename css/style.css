@@ -1,0 +1,51 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f4f8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e0e7ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-row { animation: fadeIn 0.5s ease-out forwards; }
+
+/* Tooltip */
+.tooltip { position: relative; display: inline-block; }
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 140px;
+  background-color: #312e81;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -70px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+/* Notification */
+#notification {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
