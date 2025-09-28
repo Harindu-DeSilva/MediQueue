@@ -12,3 +12,6 @@ function binarySearch(arr, key, value) {
   }
   return -1;
 }
+
+const searchAlgorithms = { binary: binarySearch };
+window.searchAlgorithms = searchAlgorithms;
