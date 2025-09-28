@@ -15,3 +15,4 @@ const sortingAlgorithms = {
 	insertion: insertionSort
 };
 window.sortingAlgorithms = sortingAlgorithms;
+

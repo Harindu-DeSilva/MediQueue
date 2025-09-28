@@ -160,3 +160,4 @@ function showNotification(message, type = "info") {
     notification.classList.add("translate-x-[120%]", "opacity-0");
   }, 3000);
 }
+

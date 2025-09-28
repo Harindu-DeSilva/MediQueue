@@ -59,6 +59,30 @@
         </div>
 
         <!-- Sorting Controls -->
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+          <h2 class="text-2xl font-bold mb-4 text-indigo-600 border-b pb-2">Sort Queue</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="sort-by" class="block text-sm font-medium text-gray-700">Sort By</label>
+              <select id="sort-by" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+                <option value="age">Age</option>
+                <option value="severity">Severity</option>
+              </select>
+            </div>
+            <div>
+              <label for="sort-algo" class="block text-sm font-medium text-gray-700">Algorithm</label>
+              <select id="sort-algo" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
+                <option value="insertion">Insertion Sort</option>
+              </select>
+            </div>
+          </div>
+          <button id="sort-btn" class="mt-4 w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600">
+            Sort Patients
+          </button>
+        </div>
+
 
 
 
