@@ -83,6 +83,12 @@ function handleSort() {
 
 
 // function to handle searching
+function handleSearch() {
+  const searchTerm = document.getElementById("search-term").value.trim();
+  if (!searchTerm) {
+    showNotification("Please enter a search term.", "error");
+    return;
+  }
 
 
 function handleResetView() {
