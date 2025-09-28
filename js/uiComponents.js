@@ -89,6 +89,9 @@ function handleSearch() {
     showNotification("Please enter a search term.", "error");
     return;
   }
+  const searchBy = document.getElementById("search-by").value;
+  const searchAlgo = document.getElementById("search-algo").value;
+}
 
 
 function handleResetView() {
