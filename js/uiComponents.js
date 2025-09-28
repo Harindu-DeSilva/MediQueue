@@ -91,6 +91,29 @@ function handleSearch() {
   }
   const searchBy = document.getElementById("search-by").value;
   const searchAlgo = document.getElementById("search-algo").value;
+
+  // Use patientQueue for searching
+  let searchArray = patientQueue.getQueueArray();
+
+  const searchFunction = searchAlgorithms[searchAlgo];
+  const startTime = performance.now();
+  const foundIndex = searchFunction(searchArray, searchBy, searchTerm);
+  const endTime = performance.now();
+
+  // Render the array that was searched (it might be sorted)
+  renderQueue(searchArray, foundIndex);
+
+  if (foundIndex !== -1) {
+    showNotification(
+      `Patient found using ${searchAlgo} search in ${(
+        endTime - startTime
+      ).toFixed(2)}ms.`,
+      "success"
+    );
+  } else {
+    showNotification(`Patient not found.`, "error");
+  }
+  
 }
 
 
