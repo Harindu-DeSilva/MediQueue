@@ -56,6 +56,30 @@ function handleDequeuePatient() {
 }
 
 // function to handle sorting
+function handleSort() {
+  if (patientQueue.getSize() < 2) {
+    showNotification("Need at least two patients to sort.", "error");
+    return;
+  }
+  const sortBy = document.getElementById("sort-by").value;
+  const sortAlgo = document.getElementById("sort-algo").value;
+
+  // Create a copy to sort, preserving the original queue order
+  displayedPatientQueue = patientQueue.getQueueArray();
+
+  const sortFunction = sortingAlgorithms[sortAlgo];
+  const startTime = performance.now();
+  sortFunction(displayedPatientQueue, sortBy);
+  const endTime = performance.now();
+
+  renderQueue(displayedPatientQueue);
+  showNotification(
+    `Sorted by ${sortBy} using ${sortAlgo} sort in ${(
+      endTime - startTime
+    ).toFixed(2)}ms.`
+  );
+}
+
 
 
 // function to handle searching
