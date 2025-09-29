@@ -81,10 +81,6 @@ function handleSort() {
 }
 
 
-
-// function to handle searching
-
-
 function handleResetView() {
   updateAndRenderQueue();
   showNotification("View has been reset to the original queue.");
